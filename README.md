@@ -1,0 +1,2 @@
+# Student_Attendance_Management_System_for_school
+a College Attendance Management System
