@@ -10,5 +10,5 @@ Biometric face tracking attendance WEB APP for tracking and verifying employeeâ€
 - [ ] add new classes to model
 - [ ] setup the database
 - [ ] captures the instant the class is detected
-- [ ] save the instant the class is detected (last seen) (update in DB)
+- [ ] save the instant the class is detected (update in DB)
 - [ ] displays in the page the last time that the class was detected from the DB
