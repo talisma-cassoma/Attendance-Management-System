@@ -5,9 +5,9 @@ Biometric face tracking attendance WEB APP for tracking and verifying employeeâ€
 ### Checklist Features
 
 - [x] train online from camera 
-- [] download model
-- [] add new classes to model
-- [] setup the database
-- [] capture save instant detected class (last seen)
-- [] save instant detected class (last seen) (update in DB)
-- [] show in page the instant detected class from DB
+- [ ] download model
+- [ ] add new classes to model
+- [ ] setup the database
+- [ ] capture save instant detected class (last seen)
+- [ ] save instant detected class (last seen) (update in DB)
+- [ ] show in page the instant detected class from DB
