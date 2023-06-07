@@ -1,5 +1,6 @@
 # Student Attendance Management_System for school
 a College Attendance Management System
+
 Biometric face tracking attendance WEB APP for tracking and verifying employee’s or student’s attendance using their unique facial characteristics
 
 ### Checklist Features
