@@ -108,7 +108,7 @@ function reset() {
 	console.log("Tensors in memory: " + tf.memory().numTensors);
 }
 
-let dataCollectorButtons = document.querySelectorAll("button.dataCollector");
+let dataCollectorButtons = document.querySelectorAll(".dataCollector");
 for (let i = 0; i < dataCollectorButtons.length; i++) {
 	dataCollectorButtons[i].addEventListener("mousedown", gatherDataForClass);
 	dataCollectorButtons[i].addEventListener("mouseup", gatherDataForClass);
