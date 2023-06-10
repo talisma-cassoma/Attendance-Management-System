@@ -60,3 +60,6 @@ button {
  padding: .4em;
 
 }
+.removed {
+    display: none;
+}

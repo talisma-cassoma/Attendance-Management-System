@@ -1,6 +1,3 @@
-.removed {
-    display: none;
-}
 
 #status {
     font-size: 150%;
@@ -44,7 +41,7 @@ body {
 
 }
 
-section.objectClass {
+.classObject {
     margin-top: 2rem;
     max-width: fit-content;
     height: fit-content;
@@ -55,19 +52,19 @@ section.objectClass {
 
 }
 
-section.objectClass .header {
+.classObject .header {
     border-bottom: 1px solid #dedede;
     padding: 1em;
 }
 
-section.objectClass .header>* {
+.classObject .header>* {
     margin-left: 1em;
 }
 
-section.objectClass .body {
+.classObject .body {
     padding: 1em;
 }
 
-section.objectClass .body>* {
+.classObject .body>* {
     margin-top: 1em;
 }
