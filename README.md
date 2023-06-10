@@ -11,4 +11,5 @@ Biometric face tracking attendance WEB APP for tracking and verifying employeeâ€
 - [ ] setup the database
 - [ ] captures the instant the class is detected
 - [ ] save the instant the class is detected (update in DB)
+- [x] teachable machine UI for Home/ train page
 - [ ] displays in the page the last time that the class was detected from the DB
