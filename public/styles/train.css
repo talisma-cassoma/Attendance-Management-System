@@ -1,0 +1,46 @@
+
+
+.removed {
+    display: none;
+}
+
+#status {
+    font-size: 150%;
+}
+body{
+background-color: #E8EAED;
+width: 100vw;
+height: 100vh;
+margin: 0;
+padding: 0;
+}
+.container{
+    display: grid;
+    height: 100%;
+    width: 100%;
+    margin: 3em;
+    padding: 0;
+}
+section.objectClass{
+    margin-top: 2rem;
+    max-width: fit-content;
+    height: fit-content;
+    border-radius: 10px;
+    box-shadow: 0px 2px 2px rgba(0,0,0,0.20);
+    background-color: #fff;
+    box-sizing: border-box;
+    
+}
+section.objectClass .header{
+    border-bottom: 1px solid #dedede;
+    padding: 1em;
+}
+section.objectClass .header > *{
+    margin-left: 1em;
+}
+section.objectClass .body{
+    padding: 1em;
+}
+section.objectClass .body > *{
+    margin-top: 1em;
+}
