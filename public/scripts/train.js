@@ -1,3 +1,5 @@
+import { dataCollectorButtons } from "./classes.js";
+
 const STATUS = document.getElementById("status");
 const VIDEO = document.getElementById("webcam");
 const ENABLE_CAM_BUTTON = document.getElementById("enableCam");
@@ -6,7 +8,7 @@ const TRAIN_BUTTON = document.getElementById("train");
 const MOBILE_NET_INPUT_WIDTH = 224;
 const MOBILE_NET_INPUT_HEIGHT = 224;
 const STOP_DATA_GATHER = -1;
-const CLASS_NAMES = [];
+const CLASS_NAMES = []
 
 ENABLE_CAM_BUTTON.addEventListener("click", enableCam);
 TRAIN_BUTTON.addEventListener("click", trainAndPredict);
@@ -52,6 +54,8 @@ function predictLoop() {
 			let prediction = model.predict(imageFeatures).squeeze();
 			let highestIndex = prediction.argMax().arraySync();
 			let predictionArray = prediction.arraySync();
+			
+			console.log(prediction)
 
 			STATUS.innerText =
 				"Prediction: " +
@@ -108,7 +112,7 @@ function reset() {
 	console.log("Tensors in memory: " + tf.memory().numTensors);
 }
 
-let dataCollectorButtons = document.querySelectorAll(".dataCollector");
+
 for (let i = 0; i < dataCollectorButtons.length; i++) {
 	dataCollectorButtons[i].addEventListener("mousedown", gatherDataForClass);
 	dataCollectorButtons[i].addEventListener("mouseup", gatherDataForClass);
