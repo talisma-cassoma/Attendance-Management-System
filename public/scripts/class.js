@@ -1,7 +1,8 @@
 import html from "./html.js";
 import gatherDataForClass from "./gatherDataForClass.js";
+import {CLASS_NAMES } from "./loadMobileNetFeatureModel.js";
 
-const CLASS_NAMES = []
+
 
 
 const buttonAddClass = document.querySelector('button.add-class')

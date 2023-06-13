@@ -4,6 +4,8 @@ const Camera = {
   videoPlaying: false,
   VIDEO : document.getElementById("webcam"),
   ENABLE_CAM_BUTTON: document.getElementById('enableCam'),
+  MOBILE_NET_INPUT_WIDTH : 224,
+  MOBILE_NET_INPUT_HEIGHT: 224,
   
   init (){
   this.ENABLE_CAM_BUTTON
@@ -27,7 +29,7 @@ const Camera = {
       Camera.VIDEO.srcObject = stream;
       Camera.VIDEO.addEventListener('loadeddata', function() {
         Camera.videoPlaying = true;
-        ENABLE_CAM_BUTTON.classList.add('removed');
+        Camera.ENABLE_CAM_BUTTON.classList.add('removed');
       });
     });
     }else {
