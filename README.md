@@ -8,6 +8,8 @@ Biometric face tracking attendance WEB APP for tracking and verifying employeeâ€
 - [x] train the neural network online from camera 
 - [ ] download the neural network model
 - [x] add new classes to model
+- [x] reset train
+    - [x] (re-train model)
 - [ ] setup the database
 - [ ] captures the instant the class is detected
 - [ ] save the instant the class is detected (update in DB)
