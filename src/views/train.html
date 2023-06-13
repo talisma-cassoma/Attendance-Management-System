@@ -24,19 +24,22 @@
             </button>
         </section>
         <section class="block2">
-            <button id="train" >Train model</button>
-            <button><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M13 12.17L15.59 9.59L17 11L12 16L7 11L8.41 9.59L11 12.17V4H13V12.17ZM6 15H4V18C4 19.1 4.9 20 6 20H18C19.1 20 20 19.1 20 18V15H18V18H6V15Z" fill="#fff"></path>
-        </svg> Download</button>
-        <button id="reset">Reset</button>
+            <button id="train">Train model</button>
+            <button id="download">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M13 12.17L15.59 9.59L17 11L12 16L7 11L8.41 9.59L11 12.17V4H13V12.17ZM6 15H4V18C4 19.1 4.9 20 6 20H18C19.1 20 20 19.1 20 18V15H18V18H6V15Z"
+                        fill="#fff"></path>
+                </svg> Download</button>
+            <button id="reset">Reset</button>
         </section>
         <section class="block3">
         </section>
         <aside class="block4">
             <video id="webcam" autoplay muted></video>
             <div id="enableCam" class="icon">
-                <svg class="sample-source-icon"  width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="sample-source-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
                     <path fill="#1967D2" fill-rule="evenodd" clip-rule="evenodd"
                         d="M18 6V10.48L22 6.5V17.5L18 13.52V14.52V18C18 19.1 17.1 20 16 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4H16C17.1 4 18 4.9 18 6ZM16 14.52V9.69V6H4V18H16V14.52Z">
                     </path>
@@ -54,6 +57,7 @@
     <script type="module" src="/scripts/gatherDataForClass.js"></script>
     <script type="module" src="/scripts/html.js"></script>
     <script type="module" src="/scripts/class.js"></script>
+    <script type="module" src="/scripts/downloadModel.js"></script>
     <script type="module" src="/scripts/train.js"></script>
 </body>
 

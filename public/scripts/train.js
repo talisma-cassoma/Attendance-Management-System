@@ -9,9 +9,13 @@ import {
 	examplesCount
 } from "./loadMobileNetFeatureModel.js";
 
+import { downloadModel } from "./downloadModel.js";
+
 
 const TRAIN_BUTTON = document.getElementById("train");
 const RESET_BUTTON = document.getElementById('reset');
+const DOWNLOAD_BUTTON = document.getElementById('download');
+
 let model = undefined
 let predict = false;
 
@@ -95,8 +99,13 @@ const Train = {
 		STATUS.innerText = 'No data collected';
 		
 		console.log('Tensors in memory: ' + tf.memory().numTensors);
+	  },
+	  downloadModel(){
+		//stop prediction lopp
+		predict = false;
+		//start download
+		downloadModel(model);
 	  }
-
 }
 
 const App = {
@@ -111,6 +120,8 @@ const App = {
 		TRAIN_BUTTON.addEventListener("click", Train.init);
 
 		RESET_BUTTON.addEventListener('click', Train.reset);
+
+		RESET_BUTTON.addEventListener('click', Train.downloadModel);
 
 	}
 }
