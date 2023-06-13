@@ -6,8 +6,8 @@ Biometric face tracking attendance WEB APP for tracking and verifying employeeâ€
 ### Checklist Features
 
 - [x] train the neural network online from camera 
-- [x] download the neural network model
-    - [] load the model
+- [x] download the neural network model 
+    - [ ] load the model
 - [x] add new classes to model
 - [x] reset train 
     - [x] (re-train model)
