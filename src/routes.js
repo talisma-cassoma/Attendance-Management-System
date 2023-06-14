@@ -19,16 +19,16 @@ routes.post('/upload',
         { name: 'model.json', maxCount: 1 },
         { name: 'model.weights.bin', maxCount: 1 }
     ]),
-    (req, res)=>{
+    (req, res) => {
         // req.body contains the text fields
         // req.files contains the file fields
         // Do something with the files and the body
         console.log(req.fieldname, req.body, req.files)
         res.send('Files uploaded to server')
     })
-    
-routes.get('/test',(req, res)=>{
-    res.sendFile(__dirname + "/views/test.html")
-})
+
+// routes.get('/test',(req, res)=>{
+//     res.sendFile(__dirname + "/views/test.html")
+// })
 
 module.exports = routes;
