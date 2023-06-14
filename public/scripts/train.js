@@ -106,6 +106,7 @@ const Train = {
 		predict = false;
 		//start download
 		downloadModel(model);
+
 	  }
 }
 

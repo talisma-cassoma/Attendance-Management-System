@@ -1,16 +1,13 @@
-// const URL =
-// 'https://tfhub.dev/google/tfjs-model/imagenet/mobilenet_v3_small_100_224/feature_vector/5/default/1';
-
-// let model = await tf.loadGraphModel(URL, { fromTFHub: true });
+import { STATUS } from "./loadMobileNetFeatureModel.js";
 
 export async function downloadModel(model){
     if(model === undefined){
         console.log("model undefined")
     }else{
         await model.save('http://localhost:3000/upload')
+       
+        console.log('!!MODEL DOWNLOADED!!')
+        STATUS.innerText = '!!MODEL DOWNLOADED!!'
     }
 }
 
-// const DOWNLOAD_BUTTON = document.getElementById('download');
-
-// DOWNLOAD_BUTTON.addEventListener('click', downloadModel);
