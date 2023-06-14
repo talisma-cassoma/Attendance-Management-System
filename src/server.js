@@ -3,6 +3,9 @@ const server = express()
 const routes = require("./routes")
 const path = require("path")
 
+const cors = require('cors')
+
+server.use(cors())
 // usando template engine
 //server.set('view engine',  'ejs')
 
@@ -15,6 +18,8 @@ server.use(express.static("public"))
 // usar o req.body
 server.use(express.urlencoded({ extended: true }))
 
+//allowing json
+server.use(express.json());
 // routes
 server.use(routes)
 

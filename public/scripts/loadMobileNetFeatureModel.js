@@ -22,6 +22,8 @@ async function loadMobileNetFeatureModel() {
         console.log(answer.shape);
     });
 }
+
+
 export {
     loadMobileNetFeatureModel,
     mobilenet,

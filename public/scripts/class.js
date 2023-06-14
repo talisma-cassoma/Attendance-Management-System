@@ -1,6 +1,6 @@
 import html from "./html.js";
 import gatherDataForClass from "./gatherDataForClass.js";
-import {CLASS_NAMES } from "./loadMobileNetFeatureModel.js";
+import { CLASS_NAMES } from "./loadMobileNetFeatureModel.js";
 
 
 

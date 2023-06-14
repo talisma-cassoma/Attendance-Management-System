@@ -20,7 +20,7 @@ let model = undefined
 let predict = false;
 
 function predictLoop() {
-	if (predict) {
+	if(predict) {
 	  tf.tidy(function() {
 		let videoFrameAsTensor = tf.browser.fromPixels(Camera.VIDEO).div(255);
 		let resizedTensorFrame = tf.image.resizeBilinear(videoFrameAsTensor,[Camera.MOBILE_NET_INPUT_HEIGHT, 
@@ -28,6 +28,8 @@ function predictLoop() {
   
 		let imageFeatures = mobilenet.predict(resizedTensorFrame.expandDims());
 		let prediction = model.predict(imageFeatures).squeeze();
+console.log(prediction)
+
 		let highestIndex = prediction.argMax().arraySync();
 		let predictionArray = prediction.arraySync();
   
@@ -58,7 +60,6 @@ async function trainAndPredict() {
 	predict = true;
 	predictLoop();
   }
-
 
 
 const Train = {
@@ -121,7 +122,7 @@ const App = {
 
 		RESET_BUTTON.addEventListener('click', Train.reset);
 
-		RESET_BUTTON.addEventListener('click', Train.downloadModel);
+		DOWNLOAD_BUTTON.addEventListener('click', Train.downloadModel);
 
 	}
 }

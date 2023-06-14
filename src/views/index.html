@@ -13,7 +13,7 @@
 <body>
     <main>
         <h1>Biometric face tracking</h1>
-        <p>a Web App for tracking and verifying employee’s or student’s attendance using their unique facial characteristics</p>
+        <p>A <strong>Web App</strong> for tracking and verifying employee’s or student’s attendance using their unique facial characteristics</p>
         <p id="status">Awaiting TF.js load</p>
         <a class="button" href="/train">
             <button>Train</button>
@@ -21,9 +21,12 @@
     </main>
     <section>
         <video id="webcam" autoplay muted></video>
-        <div class="icon">
-            <svg class="sample-source-icon" id="enableCam" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#1967D2" fill-rule="evenodd" clip-rule="evenodd" d="M18 6V10.48L22 6.5V17.5L18 13.52V14.52V18C18 19.1 17.1 20 16 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4H16C17.1 4 18 4.9 18 6ZM16 14.52V9.69V6H4V18H16V14.52Z"></path>
+        <div id="enableCam" class="icon">
+            <svg class="sample-source-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill="#1967D2" fill-rule="evenodd" clip-rule="evenodd"
+                    d="M18 6V10.48L22 6.5V17.5L18 13.52V14.52V18C18 19.1 17.1 20 16 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4H16C17.1 4 18 4.9 18 6ZM16 14.52V9.69V6H4V18H16V14.52Z">
+                </path>
             </svg>
             <span>webcam</span>
         </div>
@@ -31,7 +34,8 @@
 
     <!-- Import TensorFlow.js library -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0/dist/tf.min.js" type="text/javascript"></script>
-    <script src="/scripts/home.js"></script>
+    <script type="module" src="/scripts/camera.js"></script>
+    <script type="module" src="/scripts/loadModelOffline.js"></script>
 </body>
 
 </html>

@@ -14,8 +14,6 @@ const STOP_DATA_GATHER = -1;
 let gatherDataState = STOP_DATA_GATHER;
 
 
-
-
 function dataGatherLoop() {
     if (Camera.videoPlaying && gatherDataState !== STOP_DATA_GATHER) {
         let imageFeatures = tf.tidy(function () {
@@ -37,12 +35,11 @@ function dataGatherLoop() {
 
         STATUS.innerText = '';
         for (let n = 0; n < CLASS_NAMES.length; n++) {
-            STATUS.innerText += CLASS_NAMES[n] + examplesCount[n] + '. ';
+            STATUS.innerText += CLASS_NAMES[n] + ' -> ' + examplesCount[n] + '. \n';
         }
         window.requestAnimationFrame(dataGatherLoop);
     }
 }
-
 
 export default function gatherDataForClass() {
     let classNumber = parseInt(this.getAttribute('data-1hot'));
