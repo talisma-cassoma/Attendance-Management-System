@@ -29,7 +29,7 @@ video {
 }
 
 a {
-    text-decoration-line: underline;
+    text-decoration-line: none;
     width: fit-content;
     height: fit-content;
 }
