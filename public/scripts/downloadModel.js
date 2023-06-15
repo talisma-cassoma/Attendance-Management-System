@@ -7,7 +7,7 @@ export async function downloadModel(model){
         await model.save('http://localhost:3000/upload')
        
         console.log('!!MODEL DOWNLOADED!!')
-        STATUS.innerText = '!!MODEL DOWNLOADED!!'
+        STATUS.innerText = '!! MODEL DOWNLOADED !!'
     }
 }
 
