@@ -1,9 +1,13 @@
-const express = require("express")
-const server = express()
-const routes = require("./routes")
-const path = require("path")
 
-const cors = require('cors')
+import express from 'express';
+import {routes, __dirname} from "./routes.js"
+import open from "open"
+import cors from "cors"
+
+import path from 'path';
+
+
+const server = express()
 
 server.use(cors())
 // usando template engine
@@ -23,4 +27,8 @@ server.use(express.json());
 // routes
 server.use(routes)
 
-server.listen(3000, () => console.log('rodando'))
+server.listen(3000, async () => {
+
+    await open('http://localhost:3000');
+    console.log('rodando')
+})

@@ -20,29 +20,33 @@ let model = undefined
 let predict = false;
 
 function predictLoop() {
-	if(predict) {
-	  tf.tidy(function() {
-		let videoFrameAsTensor = tf.browser.fromPixels(Camera.VIDEO).div(255);
-		let resizedTensorFrame = tf.image.resizeBilinear(videoFrameAsTensor,[Camera.MOBILE_NET_INPUT_HEIGHT, 
+	if (predict) {
+		tf.tidy(function () {
+			let videoFrameAsTensor = tf.browser.fromPixels(Camera.VIDEO).div(255);
+			let resizedTensorFrame = tf.image.resizeBilinear(videoFrameAsTensor, [Camera.MOBILE_NET_INPUT_HEIGHT,
 			Camera.MOBILE_NET_INPUT_WIDTH], true);
-  
-		let imageFeatures = mobilenet.predict(resizedTensorFrame.expandDims());
-		let prediction = model.predict(imageFeatures).squeeze();
-console.log(prediction)
 
-		let highestIndex = prediction.argMax().arraySync();
-		let predictionArray = prediction.arraySync();
-  
-		STATUS.innerText = 'Prediction: ' + CLASS_NAMES[highestIndex] + ' with ' + Math.floor(predictionArray[highestIndex] * 100) + '% confidence';
-	  });
-  
-	  window.requestAnimationFrame(predictLoop);
+			let imageFeatures = mobilenet.predict(resizedTensorFrame.expandDims());
+			let prediction = model.predict(imageFeatures).squeeze();
+
+			let highestIndex = prediction.argMax().arraySync();
+			let predictionArray = prediction.arraySync();
+
+			let text = []
+			for (let i = 0; i < CLASS_NAMES.length; i++) {
+
+				text.push('Prediction: ' + CLASS_NAMES[i] + ' with ' + Math.floor(predictionArray[i] * 100) + '% confidence ')
+			}
+			console.log(text)
+		});
+
+		window.requestAnimationFrame(predictLoop);
 	}
-  }
+}
 
 function logProgress(epoch, logs) {
 	console.log('Data for epoch ' + epoch, logs);
-  }
+}
 
 async function trainAndPredict() {
 	predict = false;
@@ -50,16 +54,18 @@ async function trainAndPredict() {
 	let outputsAsTensor = tf.tensor1d(trainingDataOutputs, 'int32');
 	let oneHotOutputs = tf.oneHot(outputsAsTensor, CLASS_NAMES.length);
 	let inputsAsTensor = tf.stack(trainingDataInputs);
-	
-	let results = await model.fit(inputsAsTensor, oneHotOutputs, {shuffle: true, batchSize: 5, epochs: 10, 
-		callbacks: {onEpochEnd: logProgress} });
-	
+
+	let results = await model.fit(inputsAsTensor, oneHotOutputs, {
+		shuffle: true, batchSize: 5, epochs: 10,
+		callbacks: { onEpochEnd: logProgress }
+	});
+
 	outputsAsTensor.dispose();
 	oneHotOutputs.dispose();
 	inputsAsTensor.dispose();
 	predict = true;
 	predictLoop();
-  }
+}
 
 
 const Train = {
@@ -84,7 +90,7 @@ const Train = {
 	predict() {
 		trainAndPredict()
 	},
-	init(){
+	init() {
 		Train.buildModel()
 		Train.predict()
 
@@ -93,21 +99,21 @@ const Train = {
 		predict = false;
 		examplesCount.length = 0;
 		for (let i = 0; i < trainingDataInputs.length; i++) {
-		  trainingDataInputs[i].dispose();
+			trainingDataInputs[i].dispose();
 		}
 		trainingDataInputs.length = 0;
 		trainingDataOutputs.length = 0;
 		STATUS.innerText = 'No data collected';
-		
+
 		console.log('Tensors in memory: ' + tf.memory().numTensors);
-	  },
-	  downloadModel(){
+	},
+	downloadModel() {
 		//stop prediction lopp
 		predict = false;
 		//start download
 		downloadModel(model);
 
-	  }
+	}
 }
 
 const App = {

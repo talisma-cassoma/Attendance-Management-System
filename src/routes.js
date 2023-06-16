@@ -1,7 +1,13 @@
-const express = require('express');
+import express from 'express';
 const routes = express.Router();
 /** Require multer */
-const multer = require('multer')
+import multer from "multer"
+
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const upload = multer({ dest: 'public/assets/uploads/' })
 
@@ -31,4 +37,4 @@ routes.post('/upload',
 //     res.sendFile(__dirname + "/views/test.html")
 // })
 
-module.exports = routes;
+export {routes, __dirname }
