@@ -5,26 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .progressBarContainer {
+            display: flex;
+            width: fit-content;
+            align-items: center;
+        }
+
+        .progessBar {
+            width: 12em;
+            height: 2em;
+            margin: 0 .5em;
+        }
+
+        .progress {
+            display: flex;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            align-items: center;
+            justify-content: center;
+            background-color: aliceblue;
+            border-radius: .4em;
+        }
+    </style>
 </head>
-<button id="download">dowblod</button>
 
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0/dist/tf.min.js" type="text/javascript"></script>
-    <script >
-         const URL =
-'https://tfhub.dev/google/tfjs-model/imagenet/mobilenet_v3_small_100_224/feature_vector/5/default/1';
-
-
-async function downloadModel(){
-    let model = await tf.loadGraphModel(URL, { fromTFHub: true });
-
-    await model.save('http://localhost:3000/upload')
-    
-}
-
-const DOWNLOAD_BUTTON = document.getElementById('download');
-
-DOWNLOAD_BUTTON.addEventListener('click', downloadModel);
+    <div class="progressBarContainer">
+        <span>class name</span>
+        <div class="progessBar">
+            <div class="progress">
+                <p>
+                    50%
+                </p>
+            </div>
+        </div>
+    </div>
+    <script>
     </script>
 </body>
 

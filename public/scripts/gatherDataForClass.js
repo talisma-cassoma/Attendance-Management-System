@@ -5,7 +5,7 @@ import {
     trainingDataOutputs,
     examplesCount,
     CLASS_NAMES,
-    STATUS 
+    STATUS
 } from "./loadMobileNetFeatureModel.js";
 /**
  * Handle Data Gather for button mouseup/mousedown.
@@ -33,9 +33,12 @@ function dataGatherLoop() {
         }
         examplesCount[gatherDataState]++;
 
-        STATUS.innerText = '';
+        const numberOfImagesCollected = document.querySelectorAll('.numberOfImagesCollected')
+
+
         for (let n = 0; n < CLASS_NAMES.length; n++) {
-            STATUS.innerText += CLASS_NAMES[n] + ' -> ' + examplesCount[n] + '. \n';
+
+            numberOfImagesCollected[n].innerText = (examplesCount[n] === undefined )? 0 : examplesCount[n]
         }
         window.requestAnimationFrame(dataGatherLoop);
     }

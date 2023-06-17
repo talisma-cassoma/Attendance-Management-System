@@ -1,5 +1,5 @@
-import { Class, CLASS_NAMES } from "./class.js"
 import { Camera } from "./camera.js"
+import { Class, CLASS_NAMES, predictionBarsProgress } from "./class.js"
 import {
 	loadMobileNetFeatureModel,
 	trainingDataInputs,
@@ -31,13 +31,15 @@ function predictLoop() {
 
 			let highestIndex = prediction.argMax().arraySync();
 			let predictionArray = prediction.arraySync();
+			
 
-			let text = []
 			for (let i = 0; i < CLASS_NAMES.length; i++) {
 
-				text.push('Prediction: ' + CLASS_NAMES[i] + ' with ' + Math.floor(predictionArray[i] * 100) + '% confidence ')
+				let classPredictionConfidence = Math.floor(predictionArray[i] * 100) 
+				predictionBarsProgress[i].style.width = `${classPredictionConfidence}%` 
+				predictionBarsProgress[i].innerText = classPredictionConfidence + '%'
 			}
-			console.log(text)
+		
 		});
 
 		window.requestAnimationFrame(predictLoop);

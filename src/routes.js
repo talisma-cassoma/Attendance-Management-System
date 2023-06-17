@@ -33,8 +33,8 @@ routes.post('/upload',
         res.send('Files uploaded to server')
     })
 
-// routes.get('/test',(req, res)=>{
-//     res.sendFile(__dirname + "/views/test.html")
-// })
+routes.get('/test',(req, res)=>{
+    res.sendFile(__dirname + "/views/test.html")
+})
 
 export {routes, __dirname }

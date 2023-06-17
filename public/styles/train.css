@@ -68,3 +68,41 @@ body {
 .classObject .body>* {
     margin-top: 1em;
 }
+
+.progressBarContainer{
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    margin: 1em 0;
+}
+.progessBar {
+    width: 12em;
+    height: 2em;
+    margin: 0 .5em;
+}
+
+.progress {
+    display: flex;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: aliceblue;
+    border-radius: .4em;
+}
+
+.imagesCollected{
+    display: flex;
+    justify-content: space-between;
+}
+.numberOfImagesCollected{
+    display: flex;
+    width: 1.6em;
+    height: 1.6em;
+    padding: 1em;
+    border-radius: 50%;
+    background-color: #D2E3FC;
+    align-items: center;
+    justify-content: center;
+}

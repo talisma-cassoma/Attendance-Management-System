@@ -1,4 +1,4 @@
-import html from "./html.js";
+import { innerHtml } from "./html.js";
 import gatherDataForClass from "./gatherDataForClass.js";
 import { CLASS_NAMES } from "./loadMobileNetFeatureModel.js";
 
@@ -7,6 +7,19 @@ import { CLASS_NAMES } from "./loadMobileNetFeatureModel.js";
 
 const buttonAddClass = document.querySelector('button.add-class')
 const classes = document.querySelector('section.block3')
+const predictionContainer = document.querySelector('.predictions')
+const predictionBarsProgress = []
+const numberOfImagesCollected = []
+
+
+function getRandomColor() {
+    var letters = 'BCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * letters.length)];
+    }
+    return color;
+}
 
 const Class = {
     init() {
@@ -20,17 +33,32 @@ const Class = {
         } else {
             //create a html element
             const classObject = document.createElement('article')
-            classObject.innerHTML = html(newClassName, CLASS_NAMES.length)
+            classObject.innerHTML = innerHtml.classBox(newClassName, CLASS_NAMES.length)
             classObject.classList.add('classObject')
-            //
-            const dataCollectorButton = classObject.childNodes[3].childNodes[3]
-            //add envent to icon
+            classes.appendChild(classObject)
+
+            //get div.icon.dataCollector on html
+            let dataCollectorButton = classObject.children[1].children[1].children[0]
             dataCollectorButton.addEventListener("mousedown", gatherDataForClass);
             dataCollectorButton.addEventListener("mouseup", gatherDataForClass);
             // Populate the human readable names for classes.
-            classes.appendChild(classObject)
             CLASS_NAMES.push(dataCollectorButton.getAttribute("data-name"));
 
+            //array of nbrs of images colleccted div a each class div  
+            numberOfImagesCollected.push(classObject.children[1].children[1].children[1])
+
+            ////create a progress element
+            const predictionBar = document.createElement('div')
+            //fill html
+            predictionBar.innerHTML = innerHtml.progressBar(newClassName)
+            predictionBar.classList.add('progressBarContainer')
+            //save it in html page
+            predictionContainer.appendChild(predictionBar)
+
+            const progress = predictionBar.children[1].children[0]
+            progress.style.backgroundColor = getRandomColor()
+            predictionBarsProgress.push(progress)
+            //get div.numberOfImagesCollected in html
         }
     }
 }
@@ -38,4 +66,4 @@ const Class = {
 
 
 
-export { Class, CLASS_NAMES }
+export { Class, CLASS_NAMES, predictionBarsProgress}
