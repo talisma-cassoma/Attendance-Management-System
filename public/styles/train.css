@@ -68,10 +68,13 @@ body {
 .classObject .body>* {
     margin-top: 1em;
 }
-
+.predictions{
+    width: max-content;
+}
 .progressBarContainer{
     display: flex;
-    width: fit-content;
+    width: auto;
+    justify-content: space-between;
     align-items: center;
     margin: 1em 0;
 }
