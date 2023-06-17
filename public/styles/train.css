@@ -5,8 +5,8 @@
 
 body {
     background-color: #E8EAED;
-    width: 100vw;
-    height: 100vh;
+    width: auto;
+    height: auto;
     margin: 0;
     padding: 0;
 }
@@ -105,7 +105,7 @@ body {
     height: 1.6em;
     padding: 1em;
     border-radius: 50%;
-    background-color: #D2E3FC;
+    background-color: #E8EAED;
     align-items: center;
     justify-content: center;
 }

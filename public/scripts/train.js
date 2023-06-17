@@ -31,15 +31,15 @@ function predictLoop() {
 
 			let highestIndex = prediction.argMax().arraySync();
 			let predictionArray = prediction.arraySync();
-			
+
 
 			for (let i = 0; i < CLASS_NAMES.length; i++) {
 
-				let classPredictionConfidence = Math.floor(predictionArray[i] * 100) 
-				predictionBarsProgress[i].style.width = `${classPredictionConfidence}%` 
+				let classPredictionConfidence = Math.floor(predictionArray[i] * 100)
+				predictionBarsProgress[i].style.width = `${classPredictionConfidence}%`
 				predictionBarsProgress[i].innerText = classPredictionConfidence + '%'
 			}
-		
+
 		});
 
 		window.requestAnimationFrame(predictLoop);
@@ -93,9 +93,10 @@ const Train = {
 		trainAndPredict()
 	},
 	init() {
-		Train.buildModel()
-		Train.predict()
-
+		if (CLASS_NAMES != []) {
+			Train.buildModel()
+			Train.predict()
+		}
 	},
 	reset() {
 		predict = false;
