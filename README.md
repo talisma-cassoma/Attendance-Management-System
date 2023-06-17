@@ -5,7 +5,7 @@ Biometric face tracking attendance **Web App** for tracking and verifying employ
 
 ### Checklist Features
 
-- [x] train the neural network online from camera 
+- [x] train the neural network with a camera
 - [x] download the neural network model
     - [x] save it in server by http request
 - [x] add new classes to model
@@ -15,4 +15,4 @@ Biometric face tracking attendance **Web App** for tracking and verifying employ
 - [ ] setup the real time database
     - [ ] captures the instant the class was detected
     - [ ] save the instant the class was detected (update in DB)
-- [x] teachable machine UI for Home/ train page
+- [x] a UI based on the teachable machine
