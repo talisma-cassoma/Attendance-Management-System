@@ -78,15 +78,15 @@ body {
     align-items: center;
     margin: 1em 0;
 }
+.progressBarContainer > span{
+ margin-right: 1em;
+}
 .progessBar {
     width: 12em;
     height: 2em;
     margin: 0 .5em;
 }
 
-.progessBar > span{
-  text-align: right;
-}
 .progress {
     display: flex;
     height: 100%;
