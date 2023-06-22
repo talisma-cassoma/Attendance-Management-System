@@ -1,4 +1,5 @@
 import { innerHtml } from "./html.js";
+import getRandomColor from "./randomColors.js";
 import gatherDataForClass from "./gatherDataForClass.js";
 import { CLASS_NAMES } from "./loadMobileNetFeatureModel.js";
 
@@ -11,15 +12,6 @@ const predictionContainer = document.querySelector('.predictions')
 const predictionBarsProgress = []
 const numberOfImagesCollected = []
 
-
-function getRandomColor() {
-    var letters = 'AFBEF'.split('');
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * letters.length)];
-    }
-    return color;
-}
 
 const Class = {
     init() {
@@ -43,24 +35,28 @@ const Class = {
             dataCollectorButton.addEventListener("mouseup", gatherDataForClass);
             // Populate the human readable names for classes.
             CLASS_NAMES.push(dataCollectorButton.getAttribute("data-name"));
-
+            //console.log(CLASS_NAMES)
             //array of nbrs of images colleccted div a each class div  
             numberOfImagesCollected.push(classObject.children[1].children[1].children[1])
+            
 
-            ////create a progress element
-            const predictionBar = document.createElement('div')
-            //fill html
-            predictionBar.innerHTML = innerHtml.progressBar(newClassName)
-            predictionBar.classList.add('progressBarContainer')
-            //save it in html page
-            predictionContainer.appendChild(predictionBar)
-
-            const progress = predictionBar.children[1].children[0]
-            progress.style.backgroundColor = getRandomColor()
-            predictionBarsProgress.push(progress)
-            //get div.numberOfImagesCollected in html
+            ////create a progress element in html 
+            Class.createLabelPredictionsBar(newClassName)
         }
-    }
+    },
+    createLabelPredictionsBar(className){
+		const predictionBar = document.createElement('div')
+        //fill html
+        predictionBar.innerHTML = innerHtml.progressBar(className)
+        predictionBar.classList.add('progressBarContainer')
+        //save it in html page
+        predictionContainer.appendChild(predictionBar)
+        
+        const progress = predictionBar.children[1].children[0]
+        progress.style.backgroundColor = getRandomColor()
+        predictionBarsProgress.push(progress)
+        //get div.numberOfImagesCollected in html
+	}
 }
 
 

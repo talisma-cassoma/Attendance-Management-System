@@ -29,16 +29,17 @@ function predictLoop() {
 			let imageFeatures = mobilenet.predict(resizedTensorFrame.expandDims());
 			let prediction = model.predict(imageFeatures).squeeze();
 
+			let highestIndex = prediction.argMax().arraySync();
 			let predictionArray = prediction.arraySync();
-
+			
 
 			for (let i = 0; i < CLASS_NAMES.length; i++) {
 
-				let classPredictionConfidence = Math.floor(predictionArray[i] * 100)
-				predictionBarsProgress[i].style.width = `${classPredictionConfidence}%`
+				let classPredictionConfidence = Math.floor(predictionArray[i] * 100) 
+				predictionBarsProgress[i].style.width = `${classPredictionConfidence}%` 
 				predictionBarsProgress[i].innerText = classPredictionConfidence + '%'
 			}
-
+		
 		});
 
 		window.requestAnimationFrame(predictLoop);
@@ -56,6 +57,10 @@ async function trainAndPredict() {
 	let oneHotOutputs = tf.oneHot(outputsAsTensor, CLASS_NAMES.length);
 	let inputsAsTensor = tf.stack(trainingDataInputs);
 
+	let results = await model.fit(inputsAsTensor, oneHotOutputs, {
+		shuffle: true, batchSize: 5, epochs: 10,
+		callbacks: { onEpochEnd: logProgress }
+	});
 
 	outputsAsTensor.dispose();
 	oneHotOutputs.dispose();
@@ -88,10 +93,9 @@ const Train = {
 		trainAndPredict()
 	},
 	init() {
-		if (CLASS_NAMES != []) {
-			Train.buildModel()
-			Train.predict()
-		}
+		Train.buildModel()
+		Train.predict()
+
 	},
 	reset() {
 		predict = false;

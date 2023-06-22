@@ -51,4 +51,3 @@ export default function gatherDataForClass() {
     gatherDataState = (gatherDataState === STOP_DATA_GATHER) ? classNumber : STOP_DATA_GATHER;
     dataGatherLoop();
 }
-
