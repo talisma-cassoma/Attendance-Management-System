@@ -10,7 +10,7 @@ Biometric face tracking attendance **Web App** for tracking and verifying employ
     - [x] save it in server by http request
 - [x] add new classes to model
 - [x] load downloaded the model
-- [ ] **load the model fully offline**
+    - [ ] **load the model fully offline**
 - [x] reset train 
     - [x] (re-train model)
 - [ ] setup the real time database
