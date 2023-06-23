@@ -2,18 +2,20 @@ import { Camera } from "./camera.js"
 import { mobilenet, loadMobileNetFeatureModel } from "./loadMobileNetFeatureModel.js";
 import { Class, predictionBarsProgress } from "./class.js";
 
-const predictionContainer = document.querySelector('.predictions')
-
 let model = undefined
+let labels = []
 
 const Prediction = {
 
-	getModelLabelsNames() {
-		const classNames = ["Talisma", "Boteil_rouge", "nothing", "telphone"]
+	async getModelLabelsNames() {
+		const response = await fetch("http://localhost:3000/train/labels");
+		const jsonData = await response.json();
+		const classNames = jsonData.labels
 		return classNames
 	},
-	setPredictionsBars() {
-		const labels = Prediction.getModelLabelsNames()
+	async setPredictionsBars() {
+		labels = await Prediction.getModelLabelsNames()
+		//console.log(labels)
 		for (let i = 0; i < labels.length; i++) {
 			Class.createLabelPredictionsBar(labels[i])
 		}
@@ -35,13 +37,11 @@ const Prediction = {
 
 					let predictionArray = predict.arraySync();
 
-					const labels = Prediction.getModelLabelsNames()
-
 
 					for (let i = 0; i < labels.length; i++) {
 
-						let classPredictionConfidence = Math.floor(predictionArray[i] * 100) 
-						predictionBarsProgress[i].style.width = `${classPredictionConfidence}%` 
+						let classPredictionConfidence = Math.floor(predictionArray[i] * 100)
+						predictionBarsProgress[i].style.width = `${classPredictionConfidence}%`
 						predictionBarsProgress[i].innerText = classPredictionConfidence + '%'
 					}
 				});
@@ -59,27 +59,19 @@ const Prediction = {
 
 		model.summary()
 
+		await Prediction.setPredictionsBars()
+		
 		loadMobileNetFeatureModel()
 
-		Prediction.setPredictionsBars()
 	}
 }
 
 const App = {
-	init() {
+	async init() {
 		Camera.init()
-		Prediction.loadModel();
+		await Prediction.loadModel();
 		Prediction.enable()
 	}
 }
 
 App.init()
-
-
-
-
-
-
-
-
-

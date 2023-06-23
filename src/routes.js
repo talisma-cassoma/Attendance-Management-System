@@ -1,5 +1,8 @@
 import express from 'express';
 const routes = express.Router();
+
+import { Labels } from './labels.js';
+
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -10,10 +13,10 @@ const __dirname = path.dirname(__filename);
 /** Require multer */
 import multer from "multer"
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+    destination: function (request, file, cb) {
         cb(null, 'public/assets/uploads/')
     },
-    filename: function (req, file, cb) {
+    filename: function (request, file, cb) {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
         cb(null, file.fieldname)
     }
@@ -26,12 +29,12 @@ routes.post('/upload',
         { name: 'model.json', maxCount: 1 },
         { name: 'model.weights.bin', maxCount: 1 }
     ]),
-    (req, res) => {
-        // req.body contains the text fields
-        // req.files contains the file fields
+    (request, response) => {
+        // request.body contains the text fields
+        // request.files contains the file fields
         // Do something with the files and the body
-        console.log(req.fieldname, req.body, req.files)
-        res.send('Files uploaded to server')
+        console.log(request.fieldname, request.body, request.files)
+        response.send('Files uploaded to server')
     })
 
 routes.get('/', (resquest, response) => {
@@ -43,8 +46,14 @@ routes.get('/train', (resquest, response) => {
 })
 
 
-// routes.get('/test', (req, res) => {
-//     res.sendFile(__dirname + "/views/test.html")
-// })
+ routes.post('/train/labels', async (request, response) => {
+    const labels = await Labels.save(request.body)
+    return response.status(201).send();
+ })
+
+routes.get('/train/labels', async (request, response) => {
+    const labels = await Labels.read()
+    response.json(labels)
+})
 
 export { routes, __dirname }
