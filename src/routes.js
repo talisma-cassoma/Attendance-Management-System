@@ -48,6 +48,7 @@ routes.get('/train', (resquest, response) => {
 
  routes.post('/train/labels', async (request, response) => {
     const labels = await Labels.save(request.body)
+    console.log(request.body)
     return response.status(201).send();
  })
 
