@@ -109,11 +109,11 @@ const Train = {
 
 		console.log('Tensors in memory: ' + tf.memory().numTensors);
 	},
-	downloadModel() {
+	async downloadModel() {
 		//stop prediction lopp
 		predict = false;
 		//start download
-		downloadModel(model);
+		await downloadModel(model);
 
 	}
 }

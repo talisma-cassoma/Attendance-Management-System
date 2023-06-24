@@ -13,14 +13,15 @@ export async function downloadModel(model) {
 
         let response = await fetch('http://localhost:3000/train/labels', {
             method: 'POST',
+            mode: "cors",
+            cache: "no-cache",
             headers: {
-                'Content-Type': 'application/json;charset=utf-8'
+                "Content-Type": "application/json"
             },
+            redirect: "follow",
+            referrerPolicy: "no-referrer",
             body: JSON.stringify(data)
         });
-
-        let result = await response.json();
-        console.log(result.message());
 
         console.log('!!MODEL DOWNLOADED!!')
         STATUS.innerText = '!! MODEL DOWNLOADED !!'
