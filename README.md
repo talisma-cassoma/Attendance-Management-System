@@ -19,7 +19,7 @@ Biometric face tracking attendance **Web App** for tracking and verifying employ
 - [x] a UI based on the teachable machine
 
 <p align="left" >
-<img src="./public/assets/predicting.png" title="App train page" width="50%">
+<img src="./public/assets/appTrainPage.png" title="App train page" width="50%">
 </p>
 
 UPCOMMING UPADATES    
