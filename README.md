@@ -18,6 +18,17 @@ Biometric face tracking attendance **Web App** for tracking and verifying employ
     - [ ] save the instant the class was detected (update in DB)
 - [x] a UI based on the teachable machine
 
-<p align="center">
+<p align="center" width="50%">
 <img src="./public/assets/predicting.png">
 </p>
+
+UPCOMMING UPADATES    
+
+- [ ] usar o firebase como real-time db 
+- [ ] refactoring the code
+    - [ ] backend
+        - [ ] chose a design pattern
+    - [ ] frontend
+    - [ ] chose a design pattern(build)
+- [ ] Criar uma real-time db com mongodb 
+- [ ] UPDATE THE UI TO GOOGLE MEET UI (com react)
