@@ -30,5 +30,5 @@ UPCOMMING UPADATES
         - [ ] chose a design pattern
     - [ ] frontend
     - [ ] chose a design pattern(build)
-- [ ] Create avreal-time db with mongodb 
+- [ ] Create a real-time db with mongodb 
 - [ ] UPDATE THE UI TO GOOGLE MEET UI (with reactjs)
