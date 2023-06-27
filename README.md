@@ -18,7 +18,7 @@ Biometric face tracking attendance **Web App** for tracking and verifying employ
     - [ ] save the instant the class was detected (update in DB)
 - [x] a UI based on the teachable machine
 
-<p align="center" >
+<p align="left" >
 <img src="./public/assets/predicting.png" title="App train page" width="50%">
 </p>
 
